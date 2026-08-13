@@ -1,0 +1,185 @@
+/* =========================
+   FAQ HERO
+========================= */
+
+.faq-hero {
+    background: #f4f1eb;
+    text-align: center;
+}
+
+.faq-hero-content {
+    max-width: 800px;
+    margin: auto;
+    padding: 100px 20px;
+}
+
+.faq-hero h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(52px, 7vw, 82px);
+    font-weight: 500;
+    line-height: 0.95;
+    margin: 20px 0 30px;
+}
+
+.faq-hero p:last-child {
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+
+/* =========================
+   FAQ SECTION
+========================= */
+
+.faq-section {
+    padding: 110px 20px;
+}
+
+.faq-container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.faq-section .section-heading {
+    margin-bottom: 70px;
+}
+
+.faq-category {
+    margin-bottom: 65px;
+}
+
+.faq-category > h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   FAQ ITEM
+========================= */
+
+.faq-item {
+    border-top: 1px solid #d8d3ca;
+}
+
+.faq-item:last-child {
+    border-bottom: 1px solid #d8d3ca;
+}
+
+.faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    background: transparent;
+    border: none;
+
+    padding: 24px 5px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    text-align: left;
+
+    cursor: pointer;
+}
+
+.faq-question i {
+    font-size: 13px;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+}
+
+.faq-answer p {
+    padding: 0 45px 25px 5px;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/* =========================
+   CTA
+========================= */
+
+.faq-cta {
+    background: #f4f1eb;
+    text-align: center;
+    padding: 110px 20px;
+}
+
+.faq-cta h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 65px;
+    font-weight: 500;
+    line-height: 1;
+    margin: 20px 0;
+}
+
+.faq-cta p:not(.eyebrow) {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.faq-cta .btn i {
+    margin-left: 8px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+    .faq-hero-content {
+        padding: 80px 20px;
+    }
+
+    .faq-hero h1 {
+        font-size: 50px;
+    }
+
+    .faq-section {
+        padding: 80px 20px;
+    }
+
+    .faq-section .section-heading h2 {
+        font-size: 42px;
+    }
+
+    .faq-category > h3 {
+        font-size: 28px;
+    }
+
+    .faq-question {
+        font-size: 14px;
+        padding: 20px 2px;
+    }
+
+    .faq-answer p {
+        padding-left: 2px;
+        padding-right: 20px;
+    }
+
+    .faq-cta {
+        padding: 80px 20px;
+    }
+
+    .faq-cta h2 {
+        font-size: 50px;
+    }
+
+}

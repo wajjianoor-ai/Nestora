@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Track Order | NESTORA</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/track.css">
+
+    <!-- Google Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+    <div class="container navbar">
+
+        <!-- Logo -->
+
+        <a href="index.html" class="logo">
+            NESTORA
+        </a>
+
+
+        <!-- Navigation -->
+
+        <nav class="nav-menu">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="shop.html">
+                Shop
+            </a>
+
+            <a href="new-arrivals.html">
+                New Arrivals
+            </a>
+
+            <a href="about.html">
+                About Us
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </nav>
+
+
+        <!-- Icons -->
+
+        <div class="nav-icons">
+
+            <button class="icon-btn" aria-label="Search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+
+
+            <button class="icon-btn" aria-label="Account">
+                <i class="fa-regular fa-user"></i>
+            </button>
+
+
+            <a href="cart.html"
+               class="icon-btn cart-btn"
+               aria-label="Shopping cart">
+
+                <i class="fa-solid fa-bag-shopping"></i>
+
+                <span class="cart-count">
+                    0
+                </span>
+
+            </a>
+
+
+            <button class="menu-btn" aria-label="Open menu">
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- ================= TRACK ORDER ================= -->
+
+<main>
+
+
+<section class="track-hero">
+
+    <div class="container track-hero-content">
+
+        <p class="eyebrow">
+            ORDER STATUS
+        </p>
+
+        <h1>
+            Track Your Order
+        </h1>
+
+        <p>
+            Enter your order ID below to check
+            the latest status of your order.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= TRACK FORM ================= -->
+
+<section class="track-section">
+
+    <div class="container track-container">
+
+
+        <div class="track-form-wrapper">
+
+            <form id="trackForm">
+
+                <label for="orderId">
+                    Order ID
+                </label>
+
+                <div class="track-input">
+
+                    <input
+                        type="text"
+                        id="orderId"
+                        placeholder="Enter your order ID"
+                        required
+                    >
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                    >
+                        Track Order
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+
+
+        <!-- Error Message -->
+
+        <div
+            id="trackMessage"
+            class="track-message"
+        ></div>
+
+
+
+        <!-- ================= ORDER RESULT ================= -->
+
+        <div
+            id="orderResult"
+            class="order-result"
+            style="display: none;"
+        >
+
+
+            <!-- Order Header -->
+
+            <div class="order-header">
+
+                <div>
+
+                    <p class="eyebrow">
+                        ORDER
+                    </p>
+
+                    <h2 id="displayOrderId">
+                        —
+                    </h2>
+
+                </div>
+
+
+                <span
+                    id="orderStatus"
+                    class="order-status"
+                >
+                    Processing
+                </span>
+
+            </div>
+
+
+
+            <!-- Progress -->
+
+            <div class="tracking-progress">
+
+
+                <div class="tracking-step active">
+
+                    <div class="step-icon">
+
+                        <i class="fa-solid fa-check"></i>
+
+                    </div>
+
+                    <div class="step-text">
+
+                        <h3>
+                            Order Placed
+                        </h3>
+
+                        <p>
+                            Your order has been received.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="tracking-line"></div>
+
+
+
+                <div class="tracking-step active">
+
+                    <div class="step-icon">
+
+                        <i class="fa-solid fa-box"></i>
+
+                    </div>
+
+                    <div class="step-text">
+
+                        <h3>
+                            Processing
+                        </h3>
+
+                        <p>
+                            We're preparing your order.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="tracking-line"></div>
+
+
+
+                <div class="tracking-step">
+
+                    <div class="step-icon">
+
+                        <i class="fa-solid fa-truck"></i>
+
+                    </div>
+
+                    <div class="step-text">
+
+                        <h3>
+                            Shipped
+                        </h3>
+
+                        <p>
+                            Your order is on its way.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="tracking-line"></div>
+
+
+
+                <div class="tracking-step">
+
+                    <div class="step-icon">
+
+                        <i class="fa-solid fa-house"></i>
+
+                    </div>
+
+                    <div class="step-text">
+
+                        <h3>
+                            Delivered
+                        </h3>
+
+                        <p>
+                            Your order has arrived.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- Order Information -->
+
+            <div class="order-information">
+
+
+                <div class="info-card">
+
+                    <i class="fa-regular fa-user"></i>
+
+                    <div>
+
+                        <span>
+                            Customer
+                        </span>
+
+                        <strong id="customerName">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="info-card">
+
+                    <i class="fa-solid fa-credit-card"></i>
+
+                    <div>
+
+                        <span>
+                            Payment
+                        </span>
+
+                        <strong id="paymentMethod">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="info-card">
+
+                    <i class="fa-solid fa-receipt"></i>
+
+                    <div>
+
+                        <span>
+                            Total
+                        </span>
+
+                        <strong id="orderTotal">
+                            Rs. 0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= HELP ================= -->
+
+<section class="track-help">
+
+    <div class="container">
+
+        <p class="eyebrow">
+            NEED HELP?
+        </p>
+
+        <h2>
+            Can't find your order?
+        </h2>
+
+        <p>
+            If you're having trouble tracking your order,
+            our team is here to help.
+        </p>
+
+        <a
+            href="contact.html"
+            class="btn btn-primary"
+        >
+            Contact Us
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="container footer-grid">
+
+
+        <div class="footer-brand">
+
+            <h2>
+                NESTORA
+            </h2>
+
+            <p>
+                Thoughtfully designed essentials
+                for beautifully organized spaces.
+            </p>
+
+        </div>
+
+
+
+        <div class="footer-links">
+
+            <h3>
+                Shop
+            </h3>
+
+            <a href="shop.html">
+                All Products
+            </a>
+
+            <a href="new-arrivals.html">
+                New Arrivals
+            </a>
+
+            <a href="best-sellers.html">
+                Best Sellers
+            </a>
+
+        </div>
+
+
+
+        <div class="footer-links">
+
+            <h3>
+                Company
+            </h3>
+
+            <a href="about.html">
+                About Us
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <a href="faq.html">
+                FAQ
+            </a>
+
+        </div>
+
+
+
+        <div class="footer-newsletter">
+
+            <h3>
+                Stay Connected
+            </h3>
+
+            <p>
+                Get updates about new collections
+                and special offers.
+            </p>
+
+            <form>
+
+                <input
+                    type="email"
+                    placeholder="Your email address"
+                    required
+                >
+
+                <button type="submit">
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="container footer-bottom">
+
+        <p>
+            © 2026 NESTORA. All rights reserved.
+        </p>
+
+
+        <div class="social-icons">
+
+            <a href="#" aria-label="Instagram">
+
+                <i class="fa-brands fa-instagram"></i>
+
+            </a>
+
+
+            <a href="#" aria-label="Pinterest">
+
+                <i class="fa-brands fa-pinterest-p"></i>
+
+            </a>
+
+
+            <a href="#" aria-label="Facebook">
+
+                <i class="fa-brands fa-facebook-f"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="js/track.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+
+</html>
