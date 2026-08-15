@@ -1,1092 +1,424 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-    // =========================
-    // MOBILE MENU
-    // =========================
-
     const menuButton = document.querySelector(".menu-btn");
     const navMenu = document.querySelector(".nav-menu");
 
     if (menuButton && navMenu) {
-
         menuButton.addEventListener("click", function () {
             navMenu.classList.toggle("show");
         });
-
     }
 
+    let cart = JSON.parse(localStorage.getItem("nestoraCart")) || [];
+    const addCartButtons = document.querySelectorAll(".add-cart");
 
-    // =========================
-// SHOPPING CART
-// =========================
-
-let cart =
-    JSON.parse(localStorage.getItem("nestoraCart")) || [];
-
-
-const addCartButtons =
-    document.querySelectorAll(".add-cart");
-
-
-function updateCartCount() {
-
-    const totalItems =
-        cart.reduce(function (total, item) {
-
+    function updateCartCount() {
+        const totalItems = cart.reduce(function (total, item) {
             return total + (Number(item.quantity) || 1);
-
         }, 0);
 
-
-    document
-        .querySelectorAll(".cart-count")
-        .forEach(function (counter) {
-
+        document.querySelectorAll(".cart-count").forEach(function (counter) {
             counter.textContent = totalItems;
-
         });
+    }
 
-}
+    updateCartCount();
 
+    addCartButtons.forEach(function (button) {
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
+            event.stopPropagation();
 
-updateCartCount();
+            const productCard = button.closest(".product-card");
+            if (!productCard) return;
 
+            const name = productCard.querySelector("h3")?.textContent.trim();
+            const priceText = productCard.querySelector(".price")?.textContent.trim();
+            const price = Number(priceText.replace(/[^\d]/g, ""));
+            const image = productCard.querySelector("img")?.getAttribute("src");
 
-addCartButtons.forEach(function (button) {
+            if (!name || !price || !image) {
+                console.log("Product information missing.");
+                return;
+            }
 
-    button.addEventListener("click", function (event) {
-
-        event.preventDefault();
-        event.stopPropagation();
-
-
-        const productCard =
-            button.closest(".product-card");
-
-
-        if (!productCard) return;
-
-
-        const name =
-            productCard.querySelector("h3")?.textContent.trim();
-
-
-        const priceText =
-            productCard.querySelector(".price")?.textContent.trim();
-
-
-        const price =
-            Number(
-                priceText.replace(/[^\d]/g, "")
-            );
-
-
-        const image =
-            productCard.querySelector("img")?.getAttribute("src");
-
-
-        if (!name || !price || !image) {
-
-            console.log("Product information missing.");
-
-            return;
-
-        }
-
-
-        // =========================
-        // CHECK EXISTING PRODUCT
-        // =========================
-
-        const existingProduct =
-            cart.find(function (item) {
-
+            const existingProduct = cart.find(function (item) {
                 return item.name === name;
-
             });
 
+            if (existingProduct) {
+                existingProduct.quantity++;
+            } else {
+                cart.push({
+                    name: name,
+                    price: price,
+                    image: image,
+                    quantity: 1
+                });
+            }
 
-        if (existingProduct) {
+            localStorage.setItem("nestoraCart", JSON.stringify(cart));
+            updateCartCount();
 
-            existingProduct.quantity++;
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<i class="fa-solid fa-check"></i>';
 
-        } else {
-
-            cart.push({
-
-                name: name,
-
-                price: price,
-
-                image: image,
-
-                quantity: 1
-
-            });
-
-        }
-
-
-        // =========================
-        // SAVE CART
-        // =========================
-
-        localStorage.setItem(
-            "nestoraCart",
-            JSON.stringify(cart)
-        );
-
-
-        // =========================
-        // UPDATE COUNT
-        // =========================
-
-        updateCartCount();
-
-
-        // =========================
-        // BUTTON FEEDBACK
-        // =========================
-
-        const originalHTML =
-            button.innerHTML;
-
-
-        button.innerHTML =
-            '<i class="fa-solid fa-check"></i>';
-
-
-        setTimeout(function () {
-
-            button.innerHTML =
-                originalHTML;
-
-        }, 1000);
-
+            setTimeout(function () {
+                button.innerHTML = originalHTML;
+            }, 1000);
+        });
     });
-
-});
-
-    // =========================
-    // PRODUCT QUANTITY
-    // =========================
 
     const decreaseButton = document.querySelector(".quantity-decrease");
     const increaseButton = document.querySelector(".quantity-increase");
     const quantityDisplay = document.querySelector(".quantity-number");
 
     if (decreaseButton && increaseButton && quantityDisplay) {
-
         let quantity = 1;
 
         decreaseButton.addEventListener("click", function () {
-
             if (quantity > 1) {
                 quantity--;
                 quantityDisplay.textContent = quantity;
             }
-
         });
 
         increaseButton.addEventListener("click", function () {
-
             quantity++;
             quantityDisplay.textContent = quantity;
-
         });
-
     }
 
-
-    // =========================
-    // NEWSLETTER
-    // =========================
-
-    const newsletterForm =
-        document.querySelector(".footer-newsletter form");
+    const newsletterForm = document.querySelector(".footer-newsletter form");
 
     if (newsletterForm) {
-
         newsletterForm.addEventListener("submit", function (event) {
-
             event.preventDefault();
 
-            const emailInput =
-                newsletterForm.querySelector("input");
+            const emailInput = newsletterForm.querySelector("input");
 
             if (emailInput.value.trim() !== "") {
-
-                alert(
-                    "Thank you for joining the NESTORA community!"
-                );
-
+                alert("Thank you for joining the NESTORA community!");
                 emailInput.value = "";
-
             }
-
         });
-
     }
 
+    const searchButton = document.querySelector('.icon-btn[aria-label="Search"]');
 
-  // =========================
-// SEARCH
-// =========================
+    if (searchButton) {
+        searchButton.addEventListener("click", function () {
+            const searchTerm = prompt("What are you looking for?");
 
-const searchButton =
-    document.querySelector(
-        '.icon-btn[aria-label="Search"]'
-    );
+            if (searchTerm && searchTerm.trim() !== "") {
+                const query = searchTerm.trim();
 
-if (searchButton) {
-
-    searchButton.addEventListener("click", function () {
-
-        const searchTerm =
-            prompt("What are you looking for?");
-
-        if (
-            searchTerm &&
-            searchTerm.trim() !== ""
-        ) {
-
-            const query =
-                searchTerm.trim();
-
-            // If already on shop page
-            if (
-                window.location.pathname.includes(
-                    "shop.html"
-                )
-            ) {
-
-                filterShopProducts(query);
-
-            } else {
-
-                // Go to shop with search query
-                window.location.href =
-                    "shop.html?search=" +
-                    encodeURIComponent(query);
-
+                if (window.location.pathname.includes("shop.html")) {
+                    filterShopProducts(query);
+                } else {
+                    window.location.href = "shop.html?search=" + encodeURIComponent(query);
+                }
             }
+        });
+    }
 
-        }
+    function filterShopProducts(query) {
+        const products = document.querySelectorAll(".shop-product-card");
+        const search = query.toLowerCase().trim();
+        let foundProducts = 0;
 
-    });
+        products.forEach(function (product) {
+            const name = product.querySelector("h3")?.textContent.toLowerCase() || "";
+            const description = product.querySelector("p")?.textContent.toLowerCase() || "";
 
-}
+            if (name.includes(search) || description.includes(search)) {
+                product.style.display = "";
+                foundProducts++;
+            } else {
+                product.style.display = "none";
+            }
+        });
 
+        const productCount = document.querySelector(".product-count");
 
-/* =========================
-   SHOP SEARCH FUNCTION
-========================= */
-
-function filterShopProducts(query) {
-
-    const products =
-        document.querySelectorAll(
-            ".shop-product-card"
-        );
-
-    const search =
-        query.toLowerCase().trim();
-
-    let foundProducts = 0;
-
-
-    products.forEach(function (product) {
-
-        const name =
-            product
-                .querySelector("h3")
-                ?.textContent
-                .toLowerCase() || "";
-
-        const description =
-            product
-                .querySelector("p")
-                ?.textContent
-                .toLowerCase() || "";
-
-
-        if (
-            name.includes(search) ||
-            description.includes(search)
-        ) {
-
-            product.style.display = "";
-
-            foundProducts++;
-
-        } else {
-
-            product.style.display = "none";
-
-        }
-
-    });
-
-
-    // Update product count
-
-    const productCount =
-        document.querySelector(".product-count");
-
-    if (productCount) {
-
-        productCount.textContent =
-            foundProducts === 0
+        if (productCount) {
+            productCount.textContent = foundProducts === 0
                 ? "No products found"
                 : `Showing ${foundProducts} product${foundProducts > 1 ? "s" : ""}`;
-
-    }
-
-
-    // No results message
-
-    let noResults =
-        document.getElementById("noSearchResults");
-
-
-    if (foundProducts === 0) {
-
-        if (!noResults) {
-
-            noResults =
-                document.createElement("p");
-
-            noResults.id =
-                "noSearchResults";
-
-            noResults.textContent =
-                "No products found. Try another search.";
-
-            noResults.style.textAlign =
-                "center";
-
-            noResults.style.margin =
-                "40px 0";
-
-            noResults.style.fontSize =
-                "16px";
-
-            document
-                .querySelector(".shop-products-grid")
-                .after(noResults);
-
         }
 
-    } else {
+        let noResults = document.getElementById("noSearchResults");
 
-        if (noResults) {
-
+        if (foundProducts === 0) {
+            if (!noResults) {
+                noResults = document.createElement("p");
+                noResults.id = "noSearchResults";
+                noResults.textContent = "No products found. Try another search.";
+                noResults.style.textAlign = "center";
+                noResults.style.margin = "40px 0";
+                noResults.style.fontSize = "16px";
+                document.querySelector(".shop-products-grid").after(noResults);
+            }
+        } else if (noResults) {
             noResults.remove();
-
         }
-
     }
 
-}
-// =========================
-// GET SEARCH FROM URL
-// =========================
+    if (window.location.pathname.includes("shop.html")) {
+        const params = new URLSearchParams(window.location.search);
+        const searchQuery = params.get("search");
 
-if (
-    window.location.pathname.includes("shop.html")
-) {
-
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
-
-    const searchQuery =
-        params.get("search");
-
-    if (searchQuery) {
-
-        filterShopProducts(
-            searchQuery
-        );
-
+        if (searchQuery) {
+            filterShopProducts(searchQuery);
+        }
     }
 
-}
-    // =========================
-    // CART BUTTON
-    // =========================
-
-    const cartButton =
-        document.querySelector(".cart-btn");
+    const cartButton = document.querySelector(".cart-btn");
 
     if (cartButton) {
-
         cartButton.addEventListener("click", function () {
+            const cartCount = cart.reduce(function (total, item) {
+                return total + (Number(item.quantity) || 1);
+            }, 0);
 
             if (cartCount === 0) {
-
                 alert("Your cart is currently empty.");
-
             } else {
-
-                alert(
-                    `You have ${cartCount} item(s) in your cart.`
-                );
-
+                alert(`You have ${cartCount} item(s) in your cart.`);
             }
-
         });
-
     }
 
-
-    // =========================
-    // PRODUCT SORTING
-    // =========================
-
-    const sortSelect =
-        document.querySelector("#sort");
-
-    const productsGrid =
-        document.querySelector(".shop-products-grid");
+    const sortSelect = document.querySelector("#sort");
+    const productsGrid = document.querySelector(".shop-products-grid");
 
     if (sortSelect && productsGrid) {
-
         sortSelect.addEventListener("change", function () {
-
-            const products = Array.from(
-                productsGrid.querySelectorAll(
-                    ".shop-product-card"
-                )
-            );
-
+            const products = Array.from(productsGrid.querySelectorAll(".shop-product-card"));
 
             if (this.value === "low") {
-
                 products.sort((a, b) => {
-
-                    const priceA = parseInt(
-                        a.querySelector(".price")
-                            .textContent
-                            .replace(/[^\d]/g, "")
-                    );
-
-                    const priceB = parseInt(
-                        b.querySelector(".price")
-                            .textContent
-                            .replace(/[^\d]/g, "")
-                    );
-
+                    const priceA = parseInt(a.querySelector(".price").textContent.replace(/[^\d]/g, ""));
+                    const priceB = parseInt(b.querySelector(".price").textContent.replace(/[^\d]/g, ""));
                     return priceA - priceB;
-
                 });
-
-            }
-
-
-            else if (this.value === "high") {
-
+            } else if (this.value === "high") {
                 products.sort((a, b) => {
-
-                    const priceA = parseInt(
-                        a.querySelector(".price")
-                            .textContent
-                            .replace(/[^\d]/g, "")
-                    );
-
-                    const priceB = parseInt(
-                        b.querySelector(".price")
-                            .textContent
-                            .replace(/[^\d]/g, "")
-                    );
-
+                    const priceA = parseInt(a.querySelector(".price").textContent.replace(/[^\d]/g, ""));
+                    const priceB = parseInt(b.querySelector(".price").textContent.replace(/[^\d]/g, ""));
                     return priceB - priceA;
-
                 });
-
+            } else if (this.value === "featured") {
+                products.sort((a, b) => Number(a.dataset.order) - Number(b.dataset.order));
+            } else if (this.value === "newest") {
+                products.sort((a, b) => Number(b.dataset.new) - Number(a.dataset.new));
             }
 
-
-            else if (this.value === "featured") {
-
-                products.sort((a, b) => {
-
-                    return Number(a.dataset.order) -
-                        Number(b.dataset.order);
-
-                });
-
-            }
-
-
-            else if (this.value === "newest") {
-
-                products.sort((a, b) => {
-
-                    return Number(b.dataset.new) -
-                        Number(a.dataset.new);
-
-                });
-
-            }
-
-
-            products.forEach((product) => {
-
+            products.forEach(function (product) {
                 productsGrid.appendChild(product);
-
             });
-
         });
-
     }
-
 });
-// =========================
-// LOGIN
-// =========================
 
 const loginForm = document.getElementById("loginForm");
 
 if (loginForm) {
-
-    const emailInput =
-        document.getElementById("loginEmail");
-
-    const passwordInput =
-        document.getElementById("loginPassword");
-
-    const passwordToggle =
-        document.getElementById("passwordToggle");
-
-    const loginMessage =
-        document.getElementById("loginMessage");
-
-
-    // =========================
-    // SHOW / HIDE PASSWORD
-    // =========================
+    const emailInput = document.getElementById("loginEmail");
+    const passwordInput = document.getElementById("loginPassword");
+    const passwordToggle = document.getElementById("passwordToggle");
+    const loginMessage = document.getElementById("loginMessage");
 
     if (passwordToggle) {
-
-        passwordToggle.addEventListener(
-            "click",
-            function () {
-
-                if (passwordInput.type === "password") {
-
-                    passwordInput.type = "text";
-
-                    passwordToggle.innerHTML =
-                        '<i class="fa-regular fa-eye-slash"></i>';
-
-                    passwordToggle.setAttribute(
-                        "aria-label",
-                        "Hide password"
-                    );
-
-                } else {
-
-                    passwordInput.type = "password";
-
-                    passwordToggle.innerHTML =
-                        '<i class="fa-regular fa-eye"></i>';
-
-                    passwordToggle.setAttribute(
-                        "aria-label",
-                        "Show password"
-                    );
-
-                }
-
+        passwordToggle.addEventListener("click", function () {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                passwordToggle.innerHTML = '<i class="fa-regular fa-eye-slash"></i>';
+                passwordToggle.setAttribute("aria-label", "Hide password");
+            } else {
+                passwordInput.type = "password";
+                passwordToggle.innerHTML = '<i class="fa-regular fa-eye"></i>';
+                passwordToggle.setAttribute("aria-label", "Show password");
             }
-        );
-
+        });
     }
 
+    loginForm.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-    // =========================
-    // LOGIN FORM
-    // =========================
+        const email = emailInput.value.trim();
+        const password = passwordInput.value.trim();
 
-    loginForm.addEventListener(
-        "submit",
-        function (event) {
+        loginMessage.textContent = "";
 
-            event.preventDefault();
-
-
-            const email =
-                emailInput.value.trim();
-
-            const password =
-                passwordInput.value.trim();
-
-
-            loginMessage.textContent = "";
-
-
-            // EMPTY FIELDS
-
-            if (!email || !password) {
-
-                loginMessage.textContent =
-                    "Please enter your email and password.";
-
-                return;
-
-            }
-
-
-            // DEMO LOGIN
-
-            if (
-                email === "admin@nestora.com" &&
-                password === "123456"
-            ) {
-
-                loginMessage.textContent =
-                    "Login successful!";
-
-                loginMessage.style.color =
-                    "green";
-
-
-                localStorage.setItem(
-                    "nestoraLoggedIn",
-                    "true"
-                );
-
-
-                setTimeout(function () {
-
-                    window.location.href =
-                        "index.html";
-
-                }, 1000);
-
-
-            } else {
-
-                loginMessage.textContent =
-                    "Invalid email or password.";
-
-                loginMessage.style.color =
-                    "#b33";
-
-            }
-
+        if (!email || !password) {
+            loginMessage.textContent = "Please enter your email and password.";
+            return;
         }
-    );
 
-}// =========================
-// FORGOT PASSWORD
-// =========================
+        if (email === "admin@nestora.com" && password === "123456") {
+            loginMessage.textContent = "Login successful!";
+            loginMessage.style.color = "green";
 
-const forgotPassword =
-    document.getElementById("forgotPassword");
+            localStorage.setItem("nestoraLoggedIn", "true");
+
+            setTimeout(function () {
+                window.location.href = "index.html";
+            }, 1000);
+        } else {
+            loginMessage.textContent = "Invalid email or password.";
+            loginMessage.style.color = "#b33";
+        }
+    });
+}
+
+const forgotPassword = document.getElementById("forgotPassword");
 
 if (forgotPassword) {
+    forgotPassword.addEventListener("click", function (event) {
+        event.preventDefault();
 
-    forgotPassword.addEventListener(
-        "click",
-        function (event) {
+        const emailInput = document.getElementById("loginEmail");
+        const loginMessage = document.getElementById("loginMessage");
+        const email = emailInput.value.trim();
 
-            event.preventDefault();
-
-            const emailInput =
-                document.getElementById("loginEmail");
-
-            const loginMessage =
-                document.getElementById("loginMessage");
-
-            const email =
-                emailInput.value.trim();
-
-
-            if (!email) {
-
-                loginMessage.textContent =
-                    "Please enter your email address first.";
-
-                loginMessage.style.color =
-                    "#b33";
-
-                emailInput.focus();
-
-                return;
-
-            }
-
-
-            loginMessage.textContent =
-                "Password reset instructions will be sent to your email.";
-
-            loginMessage.style.color =
-                "green";
-
+        if (!email) {
+            loginMessage.textContent = "Please enter your email address first.";
+            loginMessage.style.color = "#b33";
+            emailInput.focus();
+            return;
         }
-    );
 
+        loginMessage.textContent = "Password reset instructions will be sent to your email.";
+        loginMessage.style.color = "green";
+    });
 }
-// =========================
-// REGISTER
-// =========================
 
-const registerForm =
-    document.getElementById("registerForm");
+const registerForm = document.getElementById("registerForm");
 
 if (registerForm) {
-
-    const password =
-        document.getElementById("registerPassword");
-
-    const confirmPassword =
-        document.getElementById("confirmPassword");
-
-    const message =
-        document.getElementById("registerMessage");
-
-    const passwordToggle =
-        document.getElementById(
-            "registerPasswordToggle"
-        );
-
-    const confirmPasswordToggle =
-        document.getElementById(
-            "confirmPasswordToggle"
-        );
-
-
-    // =========================
-    // PASSWORD TOGGLE
-    // =========================
+    const password = document.getElementById("registerPassword");
+    const confirmPassword = document.getElementById("confirmPassword");
+    const message = document.getElementById("registerMessage");
+    const passwordToggle = document.getElementById("registerPasswordToggle");
+    const confirmPasswordToggle = document.getElementById("confirmPasswordToggle");
 
     if (passwordToggle) {
-
-        passwordToggle.addEventListener(
-            "click",
-            function () {
-
-                if (password.type === "password") {
-
-                    password.type = "text";
-
-                    passwordToggle.innerHTML =
-                        '<i class="fa-regular fa-eye-slash"></i>';
-
-                } else {
-
-                    password.type = "password";
-
-                    passwordToggle.innerHTML =
-                        '<i class="fa-regular fa-eye"></i>';
-
-                }
-
+        passwordToggle.addEventListener("click", function () {
+            if (password.type === "password") {
+                password.type = "text";
+                passwordToggle.innerHTML = '<i class="fa-regular fa-eye-slash"></i>';
+            } else {
+                password.type = "password";
+                passwordToggle.innerHTML = '<i class="fa-regular fa-eye"></i>';
             }
-        );
-
+        });
     }
-
-
-    // =========================
-    // CONFIRM PASSWORD TOGGLE
-    // =========================
 
     if (confirmPasswordToggle) {
-
-        confirmPasswordToggle.addEventListener(
-            "click",
-            function () {
-
-                if (
-                    confirmPassword.type === "password"
-                ) {
-
-                    confirmPassword.type = "text";
-
-                    confirmPasswordToggle.innerHTML =
-                        '<i class="fa-regular fa-eye-slash"></i>';
-
-                } else {
-
-                    confirmPassword.type = "password";
-
-                    confirmPasswordToggle.innerHTML =
-                        '<i class="fa-regular fa-eye"></i>';
-
-                }
-
+        confirmPasswordToggle.addEventListener("click", function () {
+            if (confirmPassword.type === "password") {
+                confirmPassword.type = "text";
+                confirmPasswordToggle.innerHTML = '<i class="fa-regular fa-eye-slash"></i>';
+            } else {
+                confirmPassword.type = "password";
+                confirmPasswordToggle.innerHTML = '<i class="fa-regular fa-eye"></i>';
             }
-        );
-
+        });
     }
 
+    registerForm.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-    // =========================
-    // REGISTER FORM
-    // =========================
+        const firstName = document.getElementById("registerFirstName").value.trim();
+        const lastName = document.getElementById("registerLastName").value.trim();
+        const email = document.getElementById("registerEmail").value.trim();
 
-    registerForm.addEventListener(
-        "submit",
-        function (event) {
+        message.textContent = "";
 
-            event.preventDefault();
-
-
-            const firstName =
-                document.getElementById(
-                    "registerFirstName"
-                ).value.trim();
-
-            const lastName =
-                document.getElementById(
-                    "registerLastName"
-                ).value.trim();
-
-            const email =
-                document.getElementById(
-                    "registerEmail"
-                ).value.trim();
-
-
-            message.textContent = "";
-
-
-            // PASSWORD LENGTH
-
-            if (password.value.length < 6) {
-
-                message.textContent =
-                    "Password must be at least 6 characters.";
-
-                message.style.color = "#b33";
-
-                return;
-
-            }
-
-
-            // PASSWORD MATCH
-
-            if (
-                password.value !==
-                confirmPassword.value
-            ) {
-
-                message.textContent =
-                    "Passwords do not match.";
-
-                message.style.color = "#b33";
-
-                return;
-
-            }
-
-
-            // SUCCESS
-
-            message.textContent =
-                "Account created successfully!";
-
-            message.style.color = "green";
-
-
-            // Save basic account information
-
-            localStorage.setItem(
-                "nestoraUser",
-                JSON.stringify({
-                    firstName: firstName,
-                    lastName: lastName,
-                    email: email
-                })
-            );
-
-
-            setTimeout(function () {
-
-                window.location.href =
-                    "login.html";
-
-            }, 1200);
-
+        if (password.value.length < 6) {
+            message.textContent = "Password must be at least 6 characters.";
+            message.style.color = "#b33";
+            return;
         }
-    );
 
+        if (password.value !== confirmPassword.value) {
+            message.textContent = "Passwords do not match.";
+            message.style.color = "#b33";
+            return;
+        }
+
+        message.textContent = "Account created successfully!";
+        message.style.color = "green";
+
+        localStorage.setItem("nestoraUser", JSON.stringify({
+            firstName: firstName,
+            lastName: lastName,
+            email: email
+        }));
+
+        setTimeout(function () {
+            window.location.href = "login.html";
+        }, 1200);
+    });
 }
-// =========================
-// PAYMENT PAGE
-// =========================
 
-const paymentForm =
-    document.getElementById("paymentForm");
+const paymentForm = document.getElementById("paymentForm");
 
 if (paymentForm) {
-
-    const cardNumber =
-        document.getElementById("cardNumber");
-
-    const expiryDate =
-        document.getElementById("expiryDate");
-
-    const cvv =
-        document.getElementById("cvv");
-
-    const paymentMessage =
-        document.getElementById("paymentMessage");
-
-
-    // =========================
-    // CARD NUMBER FORMAT
-    // =========================
+    const cardNumber = document.getElementById("cardNumber");
+    const expiryDate = document.getElementById("expiryDate");
+    const cvv = document.getElementById("cvv");
+    const paymentMessage = document.getElementById("paymentMessage");
 
     cardNumber.addEventListener("input", function () {
-
-        let value =
-            this.value.replace(/\D/g, "");
-
-        value =
-            value.substring(0, 16);
-
-        value =
-            value.replace(/(.{4})/g, "$1 ").trim();
-
+        let value = this.value.replace(/\D/g, "");
+        value = value.substring(0, 16);
+        value = value.replace(/(.{4})/g, "$1 ").trim();
         this.value = value;
-
     });
-
-
-    // =========================
-    // EXPIRY DATE FORMAT
-    // =========================
 
     expiryDate.addEventListener("input", function () {
-
-        let value =
-            this.value.replace(/\D/g, "");
-
-        value =
-            value.substring(0, 4);
+        let value = this.value.replace(/\D/g, "");
+        value = value.substring(0, 4);
 
         if (value.length >= 3) {
-
-            value =
-                value.substring(0, 2) +
-                "/" +
-                value.substring(2);
-
+            value = value.substring(0, 2) + "/" + value.substring(2);
         }
 
         this.value = value;
-
     });
-
-
-    // =========================
-    // CVV ONLY NUMBERS
-    // =========================
 
     cvv.addEventListener("input", function () {
-
-        this.value =
-            this.value
-                .replace(/\D/g, "")
-                .substring(0, 3);
-
+        this.value = this.value.replace(/\D/g, "").substring(0, 3);
     });
 
+    paymentForm.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-    // =========================
-    // PAYMENT SUBMIT
-    // =========================
+        const cardName = document.getElementById("cardName").value.trim();
+        const cardNumberValue = cardNumber.value.replace(/\s/g, "");
+        const expiryValue = expiryDate.value.trim();
+        const cvvValue = cvv.value.trim();
 
-    paymentForm.addEventListener(
-        "submit",
-        function (event) {
-
-            event.preventDefault();
-
-
-            const cardName =
-                document
-                    .getElementById("cardName")
-                    .value
-                    .trim();
-
-            const cardNumberValue =
-                cardNumber.value
-                    .replace(/\s/g, "");
-
-            const expiryValue =
-                expiryDate.value.trim();
-
-            const cvvValue =
-                cvv.value.trim();
-
-
-            // =========================
-            // CARD NUMBER VALIDATION
-            // =========================
-
-            if (cardNumberValue.length !== 16) {
-
-                paymentMessage.textContent =
-                    "Please enter a valid 16-digit card number.";
-
-                return;
-
-            }
-
-
-            // =========================
-            // EXPIRY VALIDATION
-            // =========================
-
-            if (
-                !/^(0[1-9]|1[0-2])\/\d{2}$/
-                    .test(expiryValue)
-            ) {
-
-                paymentMessage.textContent =
-                    "Please enter a valid expiry date (MM/YY).";
-
-                return;
-
-            }
-
-
-            // =========================
-            // CVV VALIDATION
-            // =========================
-
-            if (cvvValue.length !== 3) {
-
-                paymentMessage.textContent =
-                    "Please enter a valid 3-digit CVV.";
-
-                return;
-
-            }
-
-
-            // =========================
-            // SUCCESS
-            // =========================
-
-            paymentMessage.textContent =
-                "Payment successful!";
-
-            setTimeout(function () {
-
-                window.location.href =
-                    "success.html";
-
-            }, 800);
-
+        if (cardNumberValue.length !== 16) {
+            paymentMessage.textContent = "Please enter a valid 16-digit card number.";
+            return;
         }
-    );
 
+        if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiryValue)) {
+            paymentMessage.textContent = "Please enter a valid expiry date (MM/YY).";
+            return;
+        }
+
+        if (cvvValue.length !== 3) {
+            paymentMessage.textContent = "Please enter a valid 3-digit CVV.";
+            return;
+        }
+
+        paymentMessage.textContent = "Payment successful!";
+
+        setTimeout(function () {
+            window.location.href = "success.html";
+        }, 800);
+    });
 }

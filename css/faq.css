@@ -1,7 +1,3 @@
-/* =========================
-   FAQ HERO
-========================= */
-
 .faq-hero {
     background: #f4f1eb;
     text-align: center;
@@ -26,11 +22,6 @@
     line-height: 1.8;
 }
 
-
-/* =========================
-   FAQ SECTION
-========================= */
-
 .faq-section {
     padding: 110px 20px;
 }
@@ -54,11 +45,6 @@
     font-weight: 500;
     margin-bottom: 20px;
 }
-
-
-/* =========================
-   FAQ ITEM
-========================= */
 
 .faq-item {
     border-top: 1px solid #d8d3ca;
@@ -108,11 +94,6 @@
     line-height: 1.8;
 }
 
-
-/* =========================
-   CTA
-========================= */
-
 .faq-cta {
     background: #f4f1eb;
     text-align: center;
@@ -136,11 +117,6 @@
 .faq-cta .btn i {
     margin-left: 8px;
 }
-
-
-/* =========================
-   RESPONSIVE
-========================= */
 
 @media (max-width: 600px) {
 
@@ -180,6 +156,4 @@
 
     .faq-cta h2 {
         font-size: 50px;
-    }
-
-}
+    }}

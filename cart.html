@@ -1,445 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>NESTORA | Cart</title>
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/shop.css">
-    <link rel="stylesheet" href="css/responsive.css">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
-        rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NESTORA | Cart</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/shop.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
-
-
 <body>
-
-
-    <!-- =========================
-         HEADER
-    ========================= -->
-
-    <header class="header">
-
-        <div class="container navbar">
-
-            <a href="index.html" class="logo">
-                NESTORA
-            </a>
-
-
-            <nav class="nav-menu">
-
-                <a href="index.html">
-                    Home
-                </a>
-
-                <a href="shop.html" class="active">
-                    Shop
-                </a>
-
-                <a href="new-arrivals.html">
-                    New Arrivals
-                </a>
-
-                <a href="about.html">
-                    About Us
-                </a>
-
-                <a href="contact.html">
-                    Contact
-                </a>
-
-            </nav>
-
-
-            <div class="nav-icons">
-
-                <button
-                    class="icon-btn"
-                    type="button"
-                    aria-label="Search">
-
-                    <i class="fa-solid fa-magnifying-glass"></i>
-
-                </button>
-
-
-                <button
-                    class="icon-btn"
-                    type="button"
-                    aria-label="Account">
-
-                    <i class="fa-regular fa-user"></i>
-
-                </button>
-
-
-                <a
-                    href="cart.html"
-                    class="icon-btn cart-btn"
-                    aria-label="Shopping cart">
-
-                    <i class="fa-solid fa-bag-shopping"></i>
-
-                    <span class="cart-count">
-                        0
-                    </span>
-
-                </a>
-
-
-                <button
-                    class="menu-btn"
-                    type="button"
-                    aria-label="Open menu">
-
-                    <i class="fa-solid fa-bars"></i>
-
-                </button>
-
-            </div>
-
-        </div>
-
-    </header>
-
-
-
-    <!-- =========================
-         CART PAGE
-    ========================= -->
-
-    <main>
-
-        <section class="cart-page">
-
-            <div class="container">
-
-
-                <!-- CART HEADING -->
-
-                <div class="cart-heading">
-
-                    <p class="eyebrow">
-                        NESTORA
-                    </p>
-
-                    <h1>
-                        Your Cart
-                    </h1>
-
-                    <p>
-                        Review your selected pieces before checkout.
-                    </p>
-
-                </div>
-
-
-
-                <!-- CART CONTENT -->
-
-                <div class="cart-layout">
-
-
-                    <!-- =========================
-                         CART ITEMS
-                    ========================= -->
-
-                    <div class="cart-items">
-
-                        <div id="cartItems">
-                            <!-- Products will appear here -->
-                        </div>
-
-
-                        <!-- EMPTY CART -->
-
-                        <div
-                            class="empty-cart"
-                            id="emptyCart">
-
-                            <i class="fa-solid fa-bag-shopping"></i>
-
-                            <h2>
-                                Your cart is empty
-                            </h2>
-
-                            <p>
-                                Looks like you haven't added
-                                anything to your cart yet.
-                            </p>
-
-                            <a
-                                href="shop.html"
-                                class="btn btn-primary">
-
-                                Continue Shopping
-
-                            </a>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- =========================
-                         ORDER SUMMARY
-                    ========================= -->
-
-                    <aside class="cart-summary">
-
-                        <h2>
-                            Order Summary
-                        </h2>
-
-
-                        <div class="summary-row">
-
-                            <span>
-                                Subtotal
-                            </span>
-
-                            <span id="cartSubtotal">
-                                Rs. 0
-                            </span>
-
-                        </div>
-
-
-                        <div class="summary-row">
-
-                            <span>
-                                Delivery
-                            </span>
-
-                            <span id="cartDelivery">
-                                Rs. 0
-                            </span>
-
-                        </div>
-
-
-                        <div class="summary-line"></div>
-
-
-                        <div class="summary-row summary-total">
-
-                            <span>
-                                Total
-                            </span>
-
-                            <span id="cartTotal">
-                                Rs. 0
-                            </span>
-
-                        </div>
-
-
-                        <a
-                            href="checkout.html"
-                            class="checkout-btn"
-                            id="checkoutButton">
-
-                            Proceed to Checkout
-
-                            <i class="fa-solid fa-arrow-right"></i>
-
-                        </a>
-
-
-                        <a
-                            href="shop.html"
-                            class="continue-shopping">
-
-                            <i class="fa-solid fa-arrow-left"></i>
-
-                            Continue Shopping
-
-                        </a>
-
-                    </aside>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-
-    <!-- =========================
-         FOOTER
-    ========================= -->
-
-    <footer class="footer">
-
-        <div class="container footer-grid">
-
-
-            <div class="footer-brand">
-
-                <h2>
-                    NESTORA
-                </h2>
-
-                <p>
-                    Thoughtfully designed essentials
-                    for beautifully organized spaces.
-                </p>
-
-            </div>
-
-
-            <div class="footer-links">
-
-                <h3>
-                    Shop
-                </h3>
-
-                <a href="shop.html">
-                    All Products
-                </a>
-
-                <a href="new-arrivals.html">
-                    New Arrivals
-                </a>
-
-                <a href="best sellers.html">
-                    Best Sellers
-                </a>
-
-            </div>
-
-
-            <div class="footer-links">
-
-                <h3>
-                    Company
-                </h3>
-
-                <a href="about.html">
-                    About Us
-                </a>
-
-                <a href="contact.html">
-                    Contact
-                </a>
-
-                <a href="FAQ.html">
-                    FAQ
-                </a>
-
-            </div>
-
-
-            <div class="footer-newsletter">
-
-                <h3>
-                    Stay Connected
-                </h3>
-
-                <p>
-                    Get updates about new collections
-                    and special offers.
-                </p>
-
-
-                <form>
-
-                    <input
-                        type="email"
-                        placeholder="Your email address"
-                        required>
-
-
-                    <button
-                        type="submit"
-                        aria-label="Subscribe">
-
-                        <i class="fa-solid fa-arrow-right"></i>
-
-                    </button>
-
-                </form>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="container footer-bottom">
-
-            <p>
-                © 2026 NESTORA. All rights reserved.
-            </p>
-
-
-            <div class="social-icons">
-
-                <a
-                    href="#"
-                    aria-label="Instagram">
-
-                    <i class="fa-brands fa-instagram"></i>
-
-                </a>
-
-
-                <a
-                    href="#"
-                    aria-label="Pinterest">
-
-                    <i class="fa-brands fa-pinterest-p"></i>
-
-                </a>
-
-
-                <a
-                    href="#"
-                    aria-label="Facebook">
-
-                    <i class="fa-brands fa-facebook-f"></i>
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </footer>
-
-
-
-    <!-- CART JAVASCRIPT -->
-
-    <script src="js/cart.js"></script>
-
-    <!-- COMMON JAVASCRIPT -->
-
-    <script src="js/script.js"></script>
-
-
+<header class="header">
+<div class="container navbar">
+<a href="index.html" class="logo">NESTORA</a>
+<nav class="nav-menu">
+<a href="index.html">Home</a>
+<a href="shop.html" class="active">Shop</a>
+<a href="new-arrivals.html">New Arrivals</a>
+<a href="about.html">About Us</a>
+<a href="contact.html">Contact</a>
+</nav>
+<div class="nav-icons">
+<button class="icon-btn" type="button" aria-label="Search">
+<i class="fa-solid fa-magnifying-glass"></i>
+</button>
+<button class="icon-btn" type="button" aria-label="Account">
+<i class="fa-regular fa-user"></i>
+</button>
+<a href="cart.html" class="icon-btn cart-btn" aria-label="Shopping cart">
+<i class="fa-solid fa-bag-shopping"></i>
+<span class="cart-count">0</span>
+</a>
+<button class="menu-btn" type="button" aria-label="Open menu">
+<i class="fa-solid fa-bars"></i>
+</button>
+</div>
+</div>
+</header>
+<main>
+<section class="cart-page">
+<div class="container">
+<div class="cart-heading">
+<p class="eyebrow">NESTORA</p>
+<h1>Your Cart</h1>
+<p>Review your selected pieces before checkout.</p>
+</div>
+<div class="cart-layout">
+<div class="cart-items">
+<div id="cartItems"></div>
+<div class="empty-cart" id="emptyCart">
+<i class="fa-solid fa-bag-shopping"></i>
+<h2>Your cart is empty</h2>
+<p>Looks like you haven't added anything to your cart yet.</p>
+<a href="shop.html" class="btn btn-primary">Continue Shopping</a>
+</div>
+</div>
+<aside class="cart-summary">
+<h2>Order Summary</h2>
+<div class="summary-row">
+<span>Subtotal</span>
+<span id="cartSubtotal">Rs. 0</span>
+</div>
+<div class="summary-row">
+<span>Delivery</span>
+<span id="cartDelivery">Rs. 0</span>
+</div>
+<div class="summary-line"></div>
+<div class="summary-row summary-total">
+<span>Total</span>
+<span id="cartTotal">Rs. 0</span>
+</div>
+<a href="checkout.html" class="checkout-btn" id="checkoutButton">Proceed to Checkout <i class="fa-solid fa-arrow-right"></i></a>
+<a href="shop.html" class="continue-shopping"><i class="fa-solid fa-arrow-left"></i> Continue Shopping</a>
+</aside>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<h2>NESTORA</h2>
+<p>Thoughtfully designed essentials for beautifully organized spaces.</p>
+</div>
+<div class="footer-links">
+<h3>Shop</h3>
+<a href="shop.html">All Products</a>
+<a href="new-arrivals.html">New Arrivals</a>
+<a href="best sellers.html">Best Sellers</a>
+</div>
+<div class="footer-links">
+<h3>Company</h3>
+<a href="about.html">About Us</a>
+<a href="contact.html">Contact</a>
+<a href="FAQ.html">FAQ</a>
+</div>
+<div class="footer-newsletter">
+<h3>Stay Connected</h3>
+<p>Get updates about new collections and special offers.</p>
+<form>
+<input type="email" placeholder="Your email address" required>
+<button type="submit" aria-label="Subscribe">
+<i class="fa-solid fa-arrow-right"></i>
+</button>
+</form>
+</div>
+</div>
+<div class="container footer-bottom">
+<p>© 2026 NESTORA. All rights reserved.</p>
+<div class="social-icons">
+<a href="#" aria-label="Instagram">
+<i class="fa-brands fa-instagram"></i>
+</a>
+<a href="#" aria-label="Pinterest">
+<i class="fa-brands fa-pinterest-p"></i>
+</a>
+<a href="#" aria-label="Facebook">
+<i class="fa-brands fa-facebook-f"></i>
+</a>
+</div>
+</div>
+</footer>
+<script src="js/cart.js"></script>
+<script src="js/script.js"></script>
 </body>
-
 </html>

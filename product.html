@@ -1,612 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>NESTORA | Product</title>
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/shop.css">
-    <link rel="stylesheet" href="css/responsive.css">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
-        rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NESTORA | Product</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/shop.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
-
-
 <body>
-
-
-    <!-- =========================
-         HEADER
-    ========================= -->
-
-    <header class="header">
-
-        <div class="container navbar">
-
-            <!-- LOGO -->
-
-            <a href="index.html" class="logo">
-                NESTORA
-            </a>
-
-
-            <!-- NAVIGATION -->
-
-            <nav class="nav-menu">
-
-                <a href="index.html">
-                    Home
-                </a>
-
-                <a href="shop.html" class="active">
-                    Shop
-                </a>
-
-                <a href="new-arrivals.html">
-                    New Arrivals
-                </a>
-
-                <a href="about.html">
-                    About Us
-                </a>
-
-                <a href="contact.html">
-                    Contact
-                </a>
-
-            </nav>
-
-
-            <!-- NAV ICONS -->
-
-            <div class="nav-icons">
-
-                <!-- Search -->
-
-                <button
-                    class="icon-btn"
-                    type="button"
-                    aria-label="Search">
-
-                    <i class="fa-solid fa-magnifying-glass"></i>
-
-                </button>
-
-
-                <!-- Account -->
-
-                <a href="login.html" class="icon-btn" aria-label="Account">
-                    <i class="fa-regular fa-user"></i>
-                </a>
-
-                <!-- Cart -->
-
-                <a
-                    href="cart.html"
-                    class="icon-btn cart-btn"
-                    aria-label="Shopping cart">
-
-                    <i class="fa-solid fa-bag-shopping"></i>
-
-                    <span class="cart-count">
-                        0
-                    </span>
-
-                </a>
-
-
-                <!-- Mobile Menu -->
-
-                <button
-                    class="menu-btn"
-                    type="button"
-                    aria-label="Open menu">
-
-                    <i class="fa-solid fa-bars"></i>
-
-                </button>
-
-            </div>
-
-        </div>
-
-    </header>
-
-
-
-    <!-- =========================
-         PRODUCT PAGE
-    ========================= -->
-
-    <main>
-
-        <section class="product-page">
-
-            <div class="container product-details">
-
-
-                <!-- =========================
-                     PRODUCT IMAGE
-                ========================= -->
-
-                <div class="product-detail-image">
-
-                    <img
-                        id="productImage"
-                        src=""
-                        alt="Product">
-
-                </div>
-
-
-
-                <!-- =========================
-                     PRODUCT INFORMATION
-                ========================= -->
-
-                <div class="product-detail-info">
-
-
-                    <!-- CATEGORY -->
-
-                    <p class="eyebrow">
-                        NESTORA COLLECTION
-                    </p>
-
-
-                    <!-- PRODUCT NAME -->
-
-                    <h1 id="productName">
-                        Product Name
-                    </h1>
-
-
-                    <!-- PRODUCT PRICE -->
-
-                    <span
-                        class="product-detail-price"
-                        id="productPrice">
-
-                        Rs. 0
-
-                    </span>
-
-
-                    <!-- DESCRIPTION -->
-
-                    <p
-                        class="product-detail-description"
-                        id="productDescription">
-
-                        Product description
-
-                    </p>
-
-
-                    <div class="product-detail-line"></div>
-
-
-
-                    <!-- FEATURES -->
-
-                    <div class="product-detail-feature">
-
-                        <i class="fa-solid fa-check"></i>
-
-                        <span>
-                            Thoughtfully designed for everyday use
-                        </span>
-
-                    </div>
-
-
-                    <div class="product-detail-feature">
-
-                        <i class="fa-solid fa-check"></i>
-
-                        <span>
-                            Minimal and timeless design
-                        </span>
-
-                    </div>
-
-
-                    <div class="product-detail-feature">
-
-                        <i class="fa-solid fa-check"></i>
-
-                        <span>
-                            Designed for beautifully organized spaces
-                        </span>
-
-                    </div>
-
-
-
-                    <!-- =========================
-                         QUANTITY
-                    ========================= -->
-
-                    <div class="product-quantity">
-
-                        <button
-                            class="quantity-decrease"
-                            type="button"
-                            aria-label="Decrease quantity">
-
-                            −
-
-                        </button>
-
-
-                        <span class="quantity-number">
-                            1
-                        </span>
-
-
-                        <button
-                            class="quantity-increase"
-                            type="button"
-                            aria-label="Increase quantity">
-
-                            +
-
-                        </button>
-
-                    </div>
-
-
-
-                    <!-- =========================
-                         ADD TO CART
-                    ========================= -->
-
-                    <button
-                        class="product-add-cart"
-                        id="productAddCart"
-                        type="button">
-
-                        <i class="fa-solid fa-bag-shopping"></i>
-
-                        <span>
-                            Add to Cart
-                        </span>
-
-                    </button>
-
-
-
-                    <!-- BACK TO SHOP -->
-
-                    <a
-                        href="shop.html"
-                        class="back-to-shop">
-
-                        <i class="fa-solid fa-arrow-left"></i>
-
-                        Back to Shop
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-
-    <!-- =========================
-         FOOTER
-    ========================= -->
-
-    <footer class="footer">
-
-        <div class="container footer-grid">
-
-
-            <!-- BRAND -->
-
-            <div class="footer-brand">
-
-                <h2>
-                    NESTORA
-                </h2>
-
-                <p>
-                    Thoughtfully designed essentials
-                    for beautifully organized spaces.
-                </p>
-
-            </div>
-
-
-
-            <!-- SHOP -->
-
-            <div class="footer-links">
-
-                <h3>
-                    Shop
-                </h3>
-
-                <a href="shop.html">
-                    All Products
-                </a>
-
-                <a href="new-arrivals.html">
-                    New Arrivals
-                </a>
-
-                <a href="#">
-                    Best Sellers
-                </a>
-
-            </div>
-
-
-
-            <!-- COMPANY -->
-
-            <div class="footer-links">
-
-                <h3>
-                    Company
-                </h3>
-
-                <a href="about.html">
-                    About Us
-                </a>
-
-                <a href="contact.html">
-                    Contact
-                </a>
-
-                <a href="#">
-                    FAQ
-                </a>
-
-            </div>
-
-
-
-            <!-- NEWSLETTER -->
-
-            <div class="footer-newsletter">
-
-                <h3>
-                    Stay Connected
-                </h3>
-
-                <p>
-                    Get updates about new collections
-                    and special offers.
-                </p>
-
-
-                <form>
-
-                    <input
-                        type="email"
-                        placeholder="Your email address"
-                        required>
-
-
-                    <button
-                        type="submit"
-                        aria-label="Subscribe">
-
-                        <i class="fa-solid fa-arrow-right"></i>
-
-                    </button>
-
-                </form>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- FOOTER BOTTOM -->
-
-        <div class="container footer-bottom">
-
-            <p>
-                © 2026 NESTORA. All rights reserved.
-            </p>
-
-
-            <div class="social-icons">
-
-                <a
-                    href="#"
-                    aria-label="Instagram">
-
-                    <i class="fa-brands fa-instagram"></i>
-
-                </a>
-
-
-                <a
-                    href="#"
-                    aria-label="Pinterest">
-
-                    <i class="fa-brands fa-pinterest-p"></i>
-
-                </a>
-
-
-                <a
-                    href="#"
-                    aria-label="Facebook">
-
-                    <i class="fa-brands fa-facebook-f"></i>
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </footer>
-
-
-
-    <!-- =========================
-         PRODUCT DATA
-    ========================= -->
-
-    <script>
-
-        const products = {
-
-            1: {
-                name: "Ceramic Desk Organizer",
-                price: 2450,
-                image: "images/ceramic-desk-organizer.jpeg",
-                description:
-                    "Minimal ceramic storage for your everyday desk essentials. Designed to keep your workspace clean, organized and beautiful."
-            },
-
-
-            2: {
-                name: "Oak Phone Stand",
-                price: 1350,
-                image: "images/oak-phone-stand.jpeg",
-                description:
-                    "Natural oak phone stand designed for a clean and organized workspace. Simple, practical and timeless."
-            },
-
-
-            3: {
-                name: "Luma Desk Lamp",
-                price: 3850,
-                image: "images/luma-desk-lamp.jpeg",
-                description:
-                    "Soft ambient lighting designed to create a calm and focused workspace while adding a warm touch to your desk."
-            },
-
-
-            4: {
-                name: "Mini Terra Planter",
-                price: 1150,
-                image: "images/mini-terra-planter.jpeg",
-                description:
-                    "A simple ceramic planter designed for your favorite greenery. A subtle piece for adding nature to your space."
-            },
-
-
-            5: {
-                name: "Arc Desk Clock",
-                price: 2950,
-                image: "images/arc-desk-clock.jpeg",
-                description:
-                    "A minimal desk clock designed for timeless spaces. Functional design with a clean and elegant appearance."
-            },
-
-
-            6: {
-                name: "Cove Storage Box",
-                price: 1850,
-                image: "images/cove-storage-box.jpeg",
-                description:
-                    "Elegant storage for keeping small essentials organized. A practical addition to any beautifully arranged space."
-            },
-
-
-            7: {
-                name: "Loop Cable Organizer",
-                price: 750,
-                image: "images/loop-cable-organizer.jpeg",
-                description:
-                    "A simple cable organizer designed to keep your workspace tidy and your everyday cables neatly arranged."
-            },
-
-
-            8: {
-                name: "Luma Mist Diffuser",
-                price: 2650,
-                image: "images/luma-mist-diffuser.jpeg",
-                description:
-                    "A refined mist diffuser designed to bring a calm and refreshing atmosphere to your everyday space."
-            }
-
-        };
-
-
-        /* =========================
-           GET PRODUCT ID
-        ========================= */
-
-        const urlParams =
-            new URLSearchParams(window.location.search);
-
-        const productId =
-            urlParams.get("product") || "1";
-
-
-        const product =
-            products[productId];
-
-
-        /* =========================
-           DISPLAY PRODUCT
-        ========================= */
-
-        if (product) {
-
-            document.getElementById("productImage").src =
-                product.image;
-
-            document.getElementById("productImage").alt =
-                product.name;
-
-            document.getElementById("productName").textContent =
-                product.name;
-
-            document.getElementById("productPrice").textContent =
-                "Rs. " + product.price.toLocaleString();
-
-            document.getElementById("productDescription").textContent =
-                product.description;
-
-        }
-
-    </script>
-
-
-
-    <!-- =========================
-         PRODUCT JAVASCRIPT
-    ========================= -->
-
-    <script src="js/product.js"></script>
-
-
-    <!-- COMMON JAVASCRIPT -->
-
-    <script src="js/script.js"></script>
-
-
+<header class="header">
+<div class="container navbar">
+<a href="index.html" class="logo">NESTORA</a>
+<nav class="nav-menu">
+<a href="index.html">Home</a>
+<a href="shop.html" class="active">Shop</a>
+<a href="new-arrivals.html">New Arrivals</a>
+<a href="about.html">About Us</a>
+<a href="contact.html">Contact</a>
+</nav>
+<div class="nav-icons">
+<button class="icon-btn" type="button" aria-label="Search">
+<i class="fa-solid fa-magnifying-glass"></i>
+</button>
+<a href="login.html" class="icon-btn" aria-label="Account">
+<i class="fa-regular fa-user"></i>
+</a>
+<a href="cart.html" class="icon-btn cart-btn" aria-label="Shopping cart">
+<i class="fa-solid fa-bag-shopping"></i>
+<span class="cart-count">0</span>
+</a>
+<button class="menu-btn" type="button" aria-label="Open menu">
+<i class="fa-solid fa-bars"></i>
+</button>
+</div>
+</div>
+</header>
+<main>
+<section class="product-page">
+<div class="container product-details">
+<div class="product-detail-image">
+<img id="productImage" src="" alt="Product">
+</div>
+<div class="product-detail-info">
+<p class="eyebrow">NESTORA COLLECTION</p>
+<h1 id="productName">Product Name</h1>
+<span class="product-detail-price" id="productPrice">Rs. 0</span>
+<p class="product-detail-description" id="productDescription">Product description</p>
+<div class="product-detail-line"></div>
+<div class="product-detail-feature">
+<i class="fa-solid fa-check"></i>
+<span>Thoughtfully designed for everyday use</span>
+</div>
+<div class="product-detail-feature">
+<i class="fa-solid fa-check"></i>
+<span>Minimal and timeless design</span>
+</div>
+<div class="product-detail-feature">
+<i class="fa-solid fa-check"></i>
+<span>Designed for beautifully organized spaces</span>
+</div>
+<div class="product-quantity">
+<button class="quantity-decrease" type="button" aria-label="Decrease quantity">−</button>
+<span class="quantity-number">1</span>
+<button class="quantity-increase" type="button" aria-label="Increase quantity">+</button>
+</div>
+<button class="product-add-cart" id="productAddCart" type="button">
+<i class="fa-solid fa-bag-shopping"></i>
+<span>Add to Cart</span>
+</button>
+<a href="shop.html" class="back-to-shop">
+<i class="fa-solid fa-arrow-left"></i>
+Back to Shop
+</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="container footer-grid">
+<div class="footer-brand">
+<h2>NESTORA</h2>
+<p>Thoughtfully designed essentials for beautifully organized spaces.</p>
+</div>
+<div class="footer-links">
+<h3>Shop</h3>
+<a href="shop.html">All Products</a>
+<a href="new-arrivals.html">New Arrivals</a>
+<a href="#">Best Sellers</a>
+</div>
+<div class="footer-links">
+<h3>Company</h3>
+<a href="about.html">About Us</a>
+<a href="contact.html">Contact</a>
+<a href="#">FAQ</a>
+</div>
+<div class="footer-newsletter">
+<h3>Stay Connected</h3>
+<p>Get updates about new collections and special offers.</p>
+<form>
+<input type="email" placeholder="Your email address" required>
+<button type="submit" aria-label="Subscribe">
+<i class="fa-solid fa-arrow-right"></i>
+</button>
+</form>
+</div>
+</div>
+<div class="container footer-bottom">
+<p>© 2026 NESTORA. All rights reserved.</p>
+<div class="social-icons">
+<a href="#" aria-label="Instagram">
+<i class="fa-brands fa-instagram"></i>
+</a>
+<a href="#" aria-label="Pinterest">
+<i class="fa-brands fa-pinterest-p"></i>
+</a>
+<a href="#" aria-label="Facebook">
+<i class="fa-brands fa-facebook-f"></i>
+</a>
+</div>
+</div>
+</footer>
+<script>
+</script>
+<script src="js/product.js"></script>
+<script src="js/script.js"></script>
 </body>
-
 </html>

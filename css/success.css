@@ -1,18 +1,9 @@
-/* =========================
-   SUCCESS PAGE
-========================= */
-
 .success-page {
     min-height: 70vh;
     padding: 90px 0;
     display: flex;
     align-items: center;
 }
-
-
-/* =========================
-   SUCCESS CARD
-========================= */
 
 .success-card {
     max-width: 680px;
@@ -23,33 +14,18 @@
     background: #faf9f7;
 }
 
-
-/* =========================
-   SUCCESS ICON
-========================= */
-
 .success-icon {
     width: 70px;
     height: 70px;
-
     margin: 0 auto 25px;
-
     border-radius: 50%;
-
     background: #222;
     color: #fff;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     font-size: 28px;
 }
-
-
-/* =========================
-   EYEBROW
-========================= */
 
 .success-eyebrow {
     font-size: 13px;
@@ -58,52 +34,28 @@
     margin-bottom: 12px;
 }
 
-
-/* =========================
-   HEADING
-========================= */
-
 .success-card h1 {
     font-family: "Cormorant Garamond", serif;
-
     font-size: 52px;
     line-height: 1.1;
-
     font-weight: 500;
-
     margin: 0 0 18px;
 }
 
-
-/* =========================
-   MESSAGE
-========================= */
-
 .success-message {
     max-width: 520px;
-
     margin: 0 auto 35px;
-
     font-size: 15px;
     line-height: 1.7;
 }
 
-
-/* =========================
-   ORDER ID
-========================= */
-
 .order-id-box {
     padding: 18px 25px;
-
     margin-bottom: 30px;
-
     background: #f1eee9;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     gap: 20px;
 }
 
@@ -117,15 +69,9 @@
     letter-spacing: 1px;
 }
 
-
-/* =========================
-   DETAILS
-========================= */
-
 .success-details {
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
-
     margin-bottom: 30px;
 }
 
@@ -133,11 +79,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     padding: 16px 0;
-
     border-bottom: 1px solid #e5e2de;
-
     font-size: 14px;
 }
 
@@ -153,37 +96,22 @@
     font-weight: 600;
 }
 
-
-/* =========================
-   BUTTONS
-========================= */
-
 .success-buttons {
     display: flex;
     justify-content: center;
     gap: 15px;
 }
 
-
 .success-btn {
     display: inline-flex;
-
     align-items: center;
     justify-content: center;
-
     min-height: 48px;
-
     padding: 0 25px;
-
     text-decoration: none;
-
     font-size: 14px;
-
     transition: 0.3s ease;
 }
-
-
-/* PRIMARY */
 
 .success-btn.primary {
     background: #222;
@@ -193,9 +121,6 @@
 .success-btn.primary:hover {
     background: #444;
 }
-
-
-/* SECONDARY */
 
 .success-btn.secondary {
     border: 1px solid #222;
@@ -208,13 +133,7 @@
     color: #fff;
 }
 
-
-/* =========================
-   MOBILE
-========================= */
-
 @media (max-width: 600px) {
-
     .success-page {
         padding: 55px 0;
     }
@@ -247,5 +166,4 @@
     .success-btn {
         width: 100%;
     }
-
 }

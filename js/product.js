@@ -157,3 +157,63 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+const products={
+1:{
+name:"Ceramic Desk Organizer",
+price:2450,
+image:"images/ceramic-desk-organizer.jpeg",
+description:"Minimal ceramic storage for your everyday desk essentials. Designed to keep your workspace clean, organized and beautiful."
+},
+2:{
+name:"Oak Phone Stand",
+price:1350,
+image:"images/oak-phone-stand.jpeg",
+description:"Natural oak phone stand designed for a clean and organized workspace. Simple, practical and timeless."
+},
+3:{
+name:"Luma Desk Lamp",
+price:3850,
+image:"images/luma-desk-lamp.jpeg",
+description:"Soft ambient lighting designed to create a calm and focused workspace while adding a warm touch to your desk."
+},
+4:{
+name:"Mini Terra Planter",
+price:1150,
+image:"images/mini-terra-planter.jpeg",
+description:"A simple ceramic planter designed for your favorite greenery. A subtle piece for adding nature to your space."
+},
+5:{
+name:"Arc Desk Clock",
+price:2950,
+image:"images/arc-desk-clock.jpeg",
+description:"A minimal desk clock designed for timeless spaces. Functional design with a clean and elegant appearance."
+},
+6:{
+name:"Cove Storage Box",
+price:1850,
+image:"images/cove-storage-box.jpeg",
+description:"Elegant storage for keeping small essentials organized. A practical addition to any beautifully arranged space."
+},
+7:{
+name:"Loop Cable Organizer",
+price:750,
+image:"images/loop-cable-organizer.jpeg",
+description:"A simple cable organizer designed to keep your workspace tidy and your everyday cables neatly arranged."
+},
+8:{
+name:"Luma Mist Diffuser",
+price:2650,
+image:"images/luma-mist-diffuser.jpeg",
+description:"A refined mist diffuser designed to bring a calm and refreshing atmosphere to your everyday space."
+}
+};
+const urlParams=new URLSearchParams(window.location.search);
+const productId=urlParams.get("product")||"1";
+const product=products[productId];
+if(product){
+document.getElementById("productImage").src=product.image;
+document.getElementById("productImage").alt=product.name;
+document.getElementById("productName").textContent=product.name;
+document.getElementById("productPrice").textContent="Rs. "+product.price.toLocaleString();
+document.getElementById("productDescription").textContent=product.description;
+}

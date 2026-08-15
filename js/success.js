@@ -1,117 +1,37 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-    // =========================
-    // GET LAST ORDER
-    // =========================
-
-    const order =
-        JSON.parse(
-            localStorage.getItem("lastOrder")
-        );
-
-
-    // =========================
-    // ELEMENTS
-    // =========================
-
-    const orderId =
-        document.getElementById("orderId");
-
-    const customerName =
-        document.getElementById("customerName");
-
-    const paymentMethod =
-        document.getElementById("paymentMethod");
-
-    const orderTotal =
-        document.getElementById("orderTotal");
-
-    const cartCount =
-        document.querySelector(".cart-count");
-
-
-    // =========================
-    // CART COUNT
-    // =========================
+    const order = JSON.parse(localStorage.getItem("lastOrder"));
+    const orderId = document.getElementById("orderId");
+    const customerName = document.getElementById("customerName");
+    const paymentMethod = document.getElementById("paymentMethod");
+    const orderTotal = document.getElementById("orderTotal");
+    const cartCount = document.querySelector(".cart-count");
 
     if (cartCount) {
-
         cartCount.textContent = "0";
-
     }
-
-
-    // =========================
-    // CHECK ORDER
-    // =========================
 
     if (!order) {
-
         orderId.textContent = "No order found";
-
         customerName.textContent = "—";
-
         paymentMethod.textContent = "—";
-
         orderTotal.textContent = "Rs. 0";
-
         return;
-
     }
 
+    orderId.textContent = order.orderId || "—";
 
-    // =========================
-    // ORDER ID
-    // =========================
+    const firstName = order.customer?.firstName || "";
+    const lastName = order.customer?.lastName || "";
 
-    orderId.textContent =
-        order.orderId || "—";
-
-
-    // =========================
-    // CUSTOMER NAME
-    // =========================
-
-    const firstName =
-        order.customer?.firstName || "";
-
-    const lastName =
-        order.customer?.lastName || "";
-
-
-    customerName.textContent =
-        `${firstName} ${lastName}`.trim() || "—";
-
-
-    // =========================
-    // PAYMENT METHOD
-    // =========================
+    customerName.textContent = `${firstName} ${lastName}`.trim() || "—";
 
     if (order.paymentMethod === "cod") {
-
-        paymentMethod.textContent =
-            "Cash on Delivery";
-
-    } else if (
-        order.paymentMethod === "card"
-    ) {
-
-        paymentMethod.textContent =
-            "Card Payment";
-
+        paymentMethod.textContent = "Cash on Delivery";
+    } else if (order.paymentMethod === "card") {
+        paymentMethod.textContent = "Card Payment";
     } else {
-
-        paymentMethod.textContent =
-            order.paymentMethod || "—";
-
+        paymentMethod.textContent = order.paymentMethod || "—";
     }
 
-
-    // =========================
-    // TOTAL
-    // =========================
-
-    orderTotal.textContent =
-        order.total || "Rs. 0";
-
+    orderTotal.textContent = order.total || "Rs. 0";
 });

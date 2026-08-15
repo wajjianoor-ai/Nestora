@@ -1,294 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Payment | NESTORA</title>
-
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
-        rel="stylesheet">
-
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment | NESTORA</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
-
 <body>
-
-    <!-- ================= HEADER ================= -->
-
-    <header class="header">
-
-        <div class="container navbar">
-
-            <a href="index.html" class="logo">
-                NESTORA
-            </a>
-
-            <nav class="nav-menu">
-
-                <a href="index.html">Home</a>
-
-                <a href="shop.html">Shop</a>
-
-                <a href="new-arrivals.html">New Arrivals</a>
-
-                <a href="about.html">About Us</a>
-
-                <a href="contact.html">Contact</a>
-
-            </nav>
-
-            <div class="nav-icons">
-
-                <a
-                    href="login.html"
-                    class="icon-btn"
-                    aria-label="Account">
-
-                    <i class="fa-regular fa-user"></i>
-
-                </a>
-
-                <a
-                    href="cart.html"
-                    class="icon-btn cart-btn"
-                    aria-label="Shopping cart">
-
-                    <i class="fa-solid fa-bag-shopping"></i>
-
-                    <span class="cart-count">0</span>
-
-                </a>
-
-                <button
-                    class="menu-btn"
-                    aria-label="Open menu">
-
-                    <i class="fa-solid fa-bars"></i>
-
-                </button>
-
-            </div>
-
-        </div>
-
-    </header>
-
-
-    <!-- ================= PAYMENT ================= -->
-
-    <main>
-
-        <section class="payment-section">
-
-            <div class="payment-container">
-
-                <div class="payment-heading">
-
-                    <p class="eyebrow">
-                        SECURE CHECKOUT
-                    </p>
-
-                    <h1>
-                        Card Payment
-                    </h1>
-
-                    <p>
-                        Enter your card details to complete
-                        your NESTORA order.
-                    </p>
-
-                </div>
-
-
-                <form id="paymentForm" class="payment-form">
-
-                    <!-- CARD TYPE -->
-
-                    <div class="card-type">
-
-                        <p>
-                            Select Card Type
-                        </p>
-
-                        <label class="card-option">
-
-                            <input
-                                type="radio"
-                                name="cardType"
-                                value="credit"
-                                checked>
-
-                            <span>
-                                <i class="fa-regular fa-credit-card"></i>
-                                Credit Card
-                            </span>
-
-                        </label>
-
-
-                        <label class="card-option">
-
-                            <input
-                                type="radio"
-                                name="cardType"
-                                value="debit">
-
-                            <span>
-                                <i class="fa-regular fa-credit-card"></i>
-                                Debit Card
-                            </span>
-
-                        </label>
-
-                    </div>
-
-
-                    <!-- CARDHOLDER -->
-
-                    <div class="form-group">
-
-                        <label for="cardName">
-                            Cardholder Name
-                        </label>
-
-                        <input
-                            type="text"
-                            id="cardName"
-                            placeholder="Name on card"
-                            required>
-
-                    </div>
-
-
-                    <!-- CARD NUMBER -->
-
-                    <div class="form-group">
-
-                        <label for="cardNumber">
-                            Card Number
-                        </label>
-
-                        <input
-                            type="text"
-                            id="cardNumber"
-                            placeholder="1234 5678 9012 3456"
-                            maxlength="19"
-                            inputmode="numeric"
-                            required>
-
-                    </div>
-
-
-                    <!-- EXPIRY + CVV -->
-
-                    <div class="payment-row">
-
-                        <div class="form-group">
-
-                            <label for="expiryDate">
-                                Expiry Date
-                            </label>
-
-                            <input
-                                type="text"
-                                id="expiryDate"
-                                placeholder="MM/YY"
-                                maxlength="5"
-                                required>
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="cvv">
-                                CVV
-                            </label>
-
-                            <input
-                                type="password"
-                                id="cvv"
-                                placeholder="123"
-                                maxlength="3"
-                                inputmode="numeric"
-                                required>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- MESSAGE -->
-
-                    <p
-                        id="paymentMessage"
-                        class="payment-message">
-                    </p>
-
-
-                    <!-- PAY BUTTON -->
-
-                    <button
-                        type="submit"
-                        class="btn btn-primary payment-button">
-
-                        Complete Payment
-
-                        <i class="fa-solid fa-arrow-right"></i>
-
-                    </button>
-
-
-                    <a
-                        href="checkout.html"
-                        class="back-checkout">
-
-                        <i class="fa-solid fa-arrow-left"></i>
-
-                        Back to Checkout
-
-                    </a>
-
-                </form>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer class="footer">
-
-        <div class="container footer-bottom">
-
-            <p>
-                © 2026 NESTORA. All rights reserved.
-            </p>
-
-        </div>
-
-    </footer>
-
-
-    <script src="js/script.js"></script>
-    <script src="js/cart.js"></script>
-
+<header class="header">
+<div class="container navbar">
+<a href="index.html" class="logo">NESTORA</a>
+<nav class="nav-menu">
+<a href="index.html">Home</a>
+<a href="shop.html">Shop</a>
+<a href="new-arrivals.html">New Arrivals</a>
+<a href="about.html">About Us</a>
+<a href="contact.html">Contact</a>
+</nav>
+<div class="nav-icons">
+<a href="login.html" class="icon-btn" aria-label="Account">
+<i class="fa-regular fa-user"></i>
+</a>
+<a href="cart.html" class="icon-btn cart-btn" aria-label="Shopping cart">
+<i class="fa-solid fa-bag-shopping"></i>
+<span class="cart-count">0</span>
+</a>
+<button class="menu-btn" aria-label="Open menu">
+<i class="fa-solid fa-bars"></i>
+</button>
+</div>
+</div>
+</header>
+<main>
+<section class="payment-section">
+<div class="payment-container">
+<div class="payment-heading">
+<p class="eyebrow">SECURE CHECKOUT</p>
+<h1>Card Payment</h1>
+<p>Enter your card details to complete your NESTORA order.</p>
+</div>
+<form id="paymentForm" class="payment-form">
+<div class="card-type">
+<p>Select Card Type</p>
+<label class="card-option">
+<input type="radio" name="cardType" value="credit" checked>
+<span><i class="fa-regular fa-credit-card"></i> Credit Card</span>
+</label>
+<label class="card-option">
+<input type="radio" name="cardType" value="debit">
+<span><i class="fa-regular fa-credit-card"></i> Debit Card</span>
+</label>
+</div>
+<div class="form-group">
+<label for="cardName">Cardholder Name</label>
+<input type="text" id="cardName" placeholder="Name on card" required>
+</div>
+<div class="form-group">
+<label for="cardNumber">Card Number</label>
+<input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" inputmode="numeric" required>
+</div>
+<div class="payment-row">
+<div class="form-group">
+<label for="expiryDate">Expiry Date</label>
+<input type="text" id="expiryDate" placeholder="MM/YY" maxlength="5" required>
+</div>
+<div class="form-group">
+<label for="cvv">CVV</label>
+<input type="password" id="cvv" placeholder="123" maxlength="3" inputmode="numeric" required>
+</div>
+</div>
+<p id="paymentMessage" class="payment-message"></p>
+<button type="submit" class="btn btn-primary payment-button">
+Complete Payment
+<i class="fa-solid fa-arrow-right"></i>
+</button>
+<a href="checkout.html" class="back-checkout">
+<i class="fa-solid fa-arrow-left"></i>
+Back to Checkout
+</a>
+</form>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="container footer-bottom">
+<p>© 2026 NESTORA. All rights reserved.</p>
+</div>
+</footer>
+<script src="js/script.js"></script>
+<script src="js/cart.js"></script>
 </body>
-
 </html>
